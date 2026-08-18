@@ -1,0 +1,18 @@
+/* Creating the new database called 'datawarehouse' and 
+creating three schemas 'Bronze'.'Silver' and 'Gold'
+*/
+
+
+use master;
+
+
+create database datawarehouse;
+
+use datawarehouse;
+
+create schema bronze;
+
+create schema silver;
+
+create schema gold;
+
