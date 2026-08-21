@@ -1,0 +1,18 @@
+---NULL and Duplicates
+select cst_id,count(*) from
+bronze.crm_cust_info
+group by cst_id
+having count(*) > 1 or cst_id IS NULL
+
+---Unnecessary Spaces
+select cst_firstname from bronze.crm_cust_info
+where cst_firstname != trim(cst_firstname)
+
+---Unnecessary Spaces
+select cst_lastname from bronze.crm_cust_info
+where cst_lastname != trim(cst_lastname)
+
+---Data standardization
+select distinct cst_gndr
+from bronze.crm_cust_info
+
