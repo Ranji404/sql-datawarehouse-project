@@ -85,4 +85,15 @@ end as gen
 from
 bronze.erp_cust_az12
 
+Table 5: erp_loc_a101
+select 
+replace(cid,'-','') cid,
+case when trim(cntry) = 'DE' then 'Germany'
+     when trim(cntry) IN ( 'US', 'USA') then 'United States'
+     when cntry = ' ' or cntry is null then 'N/A'
+     else trim(cntry)
+end as cntry
+from 
+bronze.erp_loc_a101
+
 
