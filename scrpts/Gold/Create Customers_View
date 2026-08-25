@@ -19,3 +19,21 @@ left join silver.erp_loc_a101 cl
 on ci.cst_key = cl.cid 
 
 --Gender value is different in silver.crm_cust_info and silver.erp_cust_az12. So made it integrated. 
+
+
+create view gold.fact_sales as
+select 
+sales.sls_ord_num as order_number,
+goldcu.customer_key,
+goldpro.product_key,
+sales.sls_order_dt as order_date,
+sales.sls_ship_dt as ship_date,
+sales.sls_due_dt as due_date,
+sales.sls_sales as sales_amount,
+sales.sls_quantity as quantity,
+sales.sls_price as price 
+from silver.crm_sales_details sales
+left join gold.dim_customers goldcu
+on sales.sls_cust_id = goldcu.customer_id
+left join gold.dim_product goldpro
+on sales.sls_prd_key = goldpro.product_number
